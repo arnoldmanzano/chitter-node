@@ -7,6 +7,15 @@
 var app = require('../app');
 var debug = require('debug')('chitter-node:server');
 var http = require('http');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/test', function(err, res) {
+  if(err) {
+    console.log('Error in database connection');
+  } else {
+    console.log('Connected successfully to database');
+  }
+});
 
 /**
  * Get port from environment and store in Express.

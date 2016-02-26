@@ -13,6 +13,12 @@ describe('Viewing Peeps', function() {
     });
   });
 
+  afterEach(function(done) {
+    Peep.collection.drop();
+    done();
+  });
+
+
   it('displays peeps from the database', function(done) {
     browser
       .url('/peeps')
@@ -20,5 +26,9 @@ describe('Viewing Peeps', function() {
         expect(text).to.include('this is a test peep');
       })
       .call(done);
+      Peep.count({}, function(err, count) {
+        expect(count).to.equal(1);
+        done();
+      });
   });
 });

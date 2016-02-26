@@ -7,6 +7,7 @@ var Peep = require('../../models/peep');
 describe('Viewing Peeps', function() {
 
   beforeEach(function(done) {
+    Peep.collection.drop();
     var newPeep = new Peep({message: 'this is a test peep'});
     newPeep.save(function(err) {
       done();
@@ -26,9 +27,5 @@ describe('Viewing Peeps', function() {
         expect(text).to.include('this is a test peep');
       })
       .call(done);
-      Peep.count({}, function(err, count) {
-        expect(count).to.equal(1);
-        done();
-      });
   });
 });

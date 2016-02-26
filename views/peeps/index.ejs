@@ -7,6 +7,9 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <% if(user) { %>
+      <p>logged in as <%= user.username %></p>
+    <% } %>
 
     <ul>
     <% for(var i=0; i<peeps.length; i++) { %>
